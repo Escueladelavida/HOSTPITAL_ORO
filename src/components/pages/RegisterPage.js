@@ -5,10 +5,19 @@ import Select from "react-select";
 export default function SignUpPage() {
   const [selectedOption, setSelectedOption] = useState(null);
   const [datos, setDatos] = useState({
-    userName: "",
-    correo: "",
-    contraseña: "",
-    telefono: "",
+    nameUser: "",
+    firstName: "",
+    lastname: "",
+    password: "",
+    nameUser: "",
+    email: "",
+    identificacion: "",
+    phoneNumber : "",
+    addres: "",
+    country: "",
+    dateBirth : "",
+    sex :""
+
   });
   const options = [
     { value: "medico", label: "Medico", name: "adasd" },
@@ -31,27 +40,31 @@ export default function SignUpPage() {
     event.preventDefault();
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
-
+    
     var raw = JSON.stringify({
-      userName: datos.userName,
-      correo: datos.correo,
-      contraseña: datos.contraseña,
-      telefono: datos.telefono,
+      "phoneNumber": datos.phoneNumber,
+      "nameUser": datos.nameUser,
+      "lastName":"datos.lastname",
+      "password": datos.password,
+      "email": datos.email,
+      "identificacion": "datos.identificacion",
+      "addres": "datos.addres",
+      "country": "Colombia",
+      "dateBirth": datos.dateBirth,
+      "sex": "adasd"
     });
-
+    
     var requestOptions = {
-      method: "POST",
+      method: 'POST',
       headers: myHeaders,
       body: raw,
-      redirect: "follow",
+      redirect: 'follow'
     };
-    await fetch(
-      "https://egsjxsrhvb.execute-api.us-east-1.amazonaws.com/dev/users/authcode",
-      requestOptions
-    )
-      .then((response) => response.text())
-      .then((result) => console.log(result))
-      .catch((error) => console.log("error", error));
+    
+    fetch("https://y802ko2n3c.execute-api.us-east-2.amazonaws.com/dev/users/authcode", requestOptions)
+      .then(response => response.text())
+      .then(result => console.log(result))
+      .catch(error => console.log('error', error));
   }
   return (
     <div className="text-center m-5-auto">
@@ -64,7 +77,8 @@ export default function SignUpPage() {
           <input
             onChange={handleInputChange}
             type="text"
-            name="userName"
+            
+            name="nameUser"
             required
           />
         </p>
@@ -85,7 +99,7 @@ export default function SignUpPage() {
           <input
             type="email"
             onChange={handleInputChange}
-            name="correo"
+            name="email"
             required
           />
         </p>
@@ -105,7 +119,7 @@ export default function SignUpPage() {
           <input
             type="text"
             onChange={handleInputChange}
-            name="telefono"
+            name="phoneNumber"
             required
           />
         </p>
@@ -115,7 +129,7 @@ export default function SignUpPage() {
           <input
             type="password"
             onChange={handleInputChange}
-            name="contraseña"
+            name="password"
             requiredc
           />
         </p>
@@ -125,7 +139,7 @@ export default function SignUpPage() {
           <input
             type="date"
             onChange={handleInputChange}
-            name="date"
+            name="dateBirth"
             requiredc
           />
         </p>
