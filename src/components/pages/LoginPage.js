@@ -14,9 +14,9 @@ export default function SignInPage() {
     { value: "masculino", label: "Masculino" },
   ];
   const [datos, setDatos] = useState({
-    userName: "",
+    nameUser: "",
 
-    contraseña: "",
+    password: "",
   });
   const handleInputChange = (event) => {
     //console.log(event.target.name);
@@ -30,26 +30,23 @@ export default function SignInPage() {
     event.preventDefault();
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
-
+    
     var raw = JSON.stringify({
-      userName: "junisa",
-      contraseña: "123sadad",
+      "nameUser": datos.nameUser,
+      "password": datos.password
     });
-
+    
     var requestOptions = {
-      method: "POST",
+      method: 'POST',
       headers: myHeaders,
       body: raw,
-      redirect: "follow",
+      redirect: 'follow'
     };
-
-    fetch(
-      "https://egsjxsrhvb.execute-api.us-east-1.amazonaws.com/dev/users/login",
-      requestOptions
-    )
-      .then((response) => response.text())
-      .then((result) => console.log(result))
-      .catch((error) => console.log("error", error));
+    
+    fetch("https://y802ko2n3c.execute-api.us-east-2.amazonaws.com/dev/users/login", requestOptions)
+      .then(response => response.text())
+      .then(result => console.log(result))
+      .catch(error => console.log('error', error));
   }
   return (
     <div className="text-center m-5-auto">
@@ -61,7 +58,7 @@ export default function SignInPage() {
           <input
             type="text"
             onChange={handleInputChange}
-            name="userName"
+            name="nameUser"
             required
           />
         </p>
@@ -74,16 +71,12 @@ export default function SignInPage() {
           <input
             type="password"
             onChange={handleInputChange}
-            name="contraseña"
+            name="password"
             required
           />
         </p>
         <p>
-          <br />
-          <label style={{ marginLeft: -10 }}>Tipo de usuario </label>
-          <br />
-          <Select options={options} />  
-          <br />
+     
         </p>
         <p>
           <button

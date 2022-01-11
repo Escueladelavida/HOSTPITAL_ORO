@@ -33,10 +33,23 @@ export default function SignUpPage() {
     myHeaders.append("Content-Type", "application/json");
 
     var raw = JSON.stringify({
+<<<<<<< Updated upstream
       userName: datos.userName,
       correo: datos.correo,
       contraseña: datos.contraseña,
       telefono: datos.telefono,
+=======
+      "phoneNumber": datos.phoneNumber,
+      "nameUser": datos.nameUser,
+      "lastName":"datos.lastname",
+      "password": datos.password,
+      "email": datos.email,
+      "identificacion": datos.identificacion,
+      "addres": "datos.addres",
+      "country": datos.country,
+      "dateBirth": datos.dateBirth,
+      "sex": "adasd"
+>>>>>>> Stashed changes
     });
 
     var requestOptions = {
@@ -74,7 +87,7 @@ export default function SignUpPage() {
           <input
             onChange={handleInputChange}
             type="text"
-            name="userName"
+            name="country"
             required
           />
         </p>
@@ -95,7 +108,7 @@ export default function SignUpPage() {
           <input
             type="text"
             onChange={handleInputChange}
-            name="correo"
+            name="identificacion"
             required
           />
         </p>
@@ -132,8 +145,7 @@ export default function SignUpPage() {
 
         <p style={{ margin: 0 }}>
           <label style={{ marginLeft: -10 }}>Genero </label>
-          <br />
-          <Select options={options} defaultValue={selectedOption} />
+       
           <br />
           <label style={{ marginLeft: -10 }}>Tipo de usuario </label>
           <br />
